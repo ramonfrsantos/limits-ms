@@ -12,10 +12,10 @@ import br.com.my.microservices.currencyexchangeservice.service.CurrencyExchangeS
 public class CurrencyExchangeController {
 
   @Autowired
-  private CurrencyExchangeService currencyexchangeservice;
+  private CurrencyExchangeService currencyExchangeService;
   
   @GetMapping("/currency-exchange/from/{from}/to/{to}")
   public CurrencyExchange retrieveExchangeValue(@PathVariable String from, @PathVariable String to){
-    return currencyexchangeservice.retrieveExchangeValue(from, to);
+    return currencyExchangeService.retrieveExchangeValue(from, to);
   }
 }
