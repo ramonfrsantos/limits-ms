@@ -26,7 +26,7 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
     return new ResponseEntity<>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
   }
 
-  // personalizar response da exception (usuário não encontrado)
+  // personalizar response da exception (CurrencyExchange não encontrado)
   @ExceptionHandler(CurrencyExchangeNotFoundException.class)
   public final ResponseEntity<Object> handleUserNotFoundExceptions(CurrencyExchangeNotFoundException ex, WebRequest request) {
     ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(),
