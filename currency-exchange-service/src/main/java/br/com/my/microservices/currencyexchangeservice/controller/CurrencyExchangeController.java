@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,5 +32,10 @@ public class CurrencyExchangeController {
   @PostMapping("/currency-exchange")
   public CurrencyExchange create(@RequestBody CurrencyExchange currencyExchange){
     return currencyExchangeService.create(currencyExchange);
+  }
+
+  @PutMapping("/currency-exchange")
+  public CurrencyExchange update(@RequestBody CurrencyExchange currencyExchange){
+    return currencyExchangeService.update(currencyExchange);
   }
 }

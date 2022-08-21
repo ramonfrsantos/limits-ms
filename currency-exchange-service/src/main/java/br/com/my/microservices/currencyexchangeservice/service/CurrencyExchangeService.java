@@ -30,7 +30,7 @@ public class CurrencyExchangeService {
 
     CurrencyExchange currencyExchange = currencyExchangeRepository.findByFromAndTo(from, to);
     if(Objects.isNull(currencyExchange)){
-      throw new CurrencyExchangeNotFoundException("Currency exchange not found in system.");
+      throw new CurrencyExchangeNotFoundException("Currency exchange not found in the system!");
     }
 
     // new CurrencyExchange(from, to, BigDecimal.valueOf(50));
@@ -41,6 +41,18 @@ public class CurrencyExchangeService {
 
   public CurrencyExchange create(CurrencyExchange currencyExchange) {
     CurrencyExchange savedCurrencyExchange = new CurrencyExchange(currencyExchange.getFrom(), currencyExchange.getTo(), currencyExchange.getConversionMultiple());
+    return currencyExchangeRepository.save(savedCurrencyExchange);
+  }
+
+  public CurrencyExchange update(CurrencyExchange currencyExchangeReceived) {
+    CurrencyExchange currencyExchange = currencyExchangeRepository.findByFromAndTo(currencyExchangeReceived.getFrom(), currencyExchangeReceived.getTo());
+    if(Objects.isNull(currencyExchange)){
+      throw new CurrencyExchangeNotFoundException("Currency exchange not found in the system!");
+    }
+    CurrencyExchange savedCurrencyExchange = new CurrencyExchange();
+    savedCurrencyExchange = currencyExchange;
+    savedCurrencyExchange.setConversionMultiple(currencyExchangeReceived.getConversionMultiple());
+
     return currencyExchangeRepository.save(savedCurrencyExchange);
   }
 
