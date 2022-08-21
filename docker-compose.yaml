@@ -85,8 +85,5 @@ services:
     networks:
       - currency-network
 
-  java:
-    image: openjdk:7
-
 networks:
   currency-network:

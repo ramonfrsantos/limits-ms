@@ -1,5 +1,6 @@
 package br.com.my.microservices.currencyexchangeservice.service;
 
+import java.util.List;
 import java.util.Objects;
 
 import org.slf4j.Logger;
@@ -36,5 +37,14 @@ public class CurrencyExchangeService {
     currencyExchange.setEnvironment(port);
 
     return currencyExchangeRepository.save(currencyExchange);
+  }
+
+  public CurrencyExchange create(CurrencyExchange currencyExchange) {
+    CurrencyExchange savedCurrencyExchange = new CurrencyExchange(currencyExchange.getFrom(), currencyExchange.getTo(), currencyExchange.getConversionMultiple());
+    return currencyExchangeRepository.save(savedCurrencyExchange);
+  }
+
+  public List<CurrencyExchange> findAll() {
+    return currencyExchangeRepository.findAll();
   }
 }
